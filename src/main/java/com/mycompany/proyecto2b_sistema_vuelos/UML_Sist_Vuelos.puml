@@ -1,4 +1,85 @@
 @startuml
+note as N1
+Autores:
+Dilan Simbaña
+Génesis Tufiño
+Katherin Maila
+Joselyn Pauta
+end note
 
+class Aerolinea {
+    -nombre: String
+    +getNombre(): String
+}
+
+class Cliente {
+    -nombre: String
+    -cedula: String
+    -correo: String
+    +registrarse(): void
+}
+
+class Vuelo {
+    -numeroVuelo: String
+    -origen: String
+    -destino: String
+    -fecha: String
+    -precio: double
+    +getDetalles(): String
+}
+
+class Avion {
+    -modelo: String
+    -capacidad: int
+    +getCapacidad(): int
+}
+
+class Reserva {
+    -idReserva: String
+    -asiento: Asiento
+    +confirmarReserva(): void
+}
+
+class Factura {
+    -codigo: String
+    -precioFinal: double
+    -cliente: Cliente
+    -vuelo: Vuelo
+    -asiento: Asiento
+    +generarFactura(): void
+}
+
+class Asiento {
+    -numero: int
+    -clase: String
+    -disponible: boolean
+    +isDisponible(): boolean
+}
+
+interface ExportadorFactura {
+    +exportar(factura: Factura): void
+}
+
+class ExportadorPDF {
+    +exportar(factura: Factura): void
+}
+
+
+
+Aerolinea "1" -- "*" Vuelo : administra
+Aerolinea "1" -- "*" Avion : posee
+
+Vuelo "1" o-- "1" Avion : asignado a
+Avion "1" -- "*" Asiento : contiene
+
+Cliente "1" -- "*" Reserva : realiza
+Reserva "1" -- "1" Vuelo : para
+Reserva "1" -- "1" Asiento : elige
+
+Reserva "1" ..> "1" Factura : genera
+Factura "1" -- "1" Cliente : pertenece a
+
+ExportadorFactura <|.. ExportadorPDF : implementa
+Factura ..> ExportadorFactura : es procesada por
 
 @enduml
