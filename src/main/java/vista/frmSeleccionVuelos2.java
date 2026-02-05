@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class frmSeleccionVuelos2 extends JFrame {
-
+    private Vuelo vueloIdaSeleccionado; 
     private String origen;
     private String destino;
     private String fechaIda;
@@ -34,10 +34,7 @@ public class frmSeleccionVuelos2 extends JFrame {
     private List<String> asientosVueltaSeleccionados;
 
     // En frmSeleccionVuelos2 - MODIFICA EL CONSTRUCTOR
-    public frmSeleccionVuelos2(String origen, String destino, String fechaVuelta,
-            int adultos, int ninos, int bebes,
-            Vuelo vueloIdaSeleccionado, // <-- Agrega este parámetro
-            String claseSeleccionadaIda, double precioFinalIda) {
+    public frmSeleccionVuelos2(String origen, String fechaIda, String destino, int adultos, int ninos, int bebes, Vuelo vueloIdaSeleccionado, String claseSeleccionadaIda, double precioFinalIda) {
 
         initComponents();
 
@@ -47,6 +44,8 @@ public class frmSeleccionVuelos2 extends JFrame {
         this.adultos = adultos;
         this.ninos = ninos;
         this.bebes = bebes;
+        this.fechaIda = fechaIda; // ✅ NECESARIA
+
 
         // Guardar información del vuelo de IDA
         this.vueloIdaSeleccionado = vueloIdaSeleccionado;
@@ -64,7 +63,7 @@ public class frmSeleccionVuelos2 extends JFrame {
     }
 
     // Agrega estas variables
-    private Vuelo vueloIdaSeleccionado; // Para guardar el vuelo de ida
+    
 
     private void configurarInterfazDespuesDeInit() {
         jblTitulo.setText("Vuelos de Vuelta: " + origen + " → " + destino);
@@ -566,7 +565,19 @@ public class frmSeleccionVuelos2 extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        this.dispose();
+        frmSeleccionVuelos ventanaVuelos = new frmSeleccionVuelos(
+        origen,
+        destino,
+        fechaIda,
+        fechaVuelta,
+        false,      // 👈 NO es solo ida (ya estás en ida + vuelta)
+        adultos,
+        ninos,
+        bebes
+    );
+
+    ventanaVuelos.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed

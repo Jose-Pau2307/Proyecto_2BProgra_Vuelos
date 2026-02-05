@@ -188,6 +188,11 @@ public class frmPago extends javax.swing.JFrame {
 
         jLabel6.setText("CVC");
 
+        txtCvv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCvvActionPerformed(evt);
+            }
+        });
         txtCvv.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCvvKeyTyped(evt);
@@ -345,7 +350,7 @@ public class frmPago extends javax.swing.JFrame {
             evt.consume(); // Ignora la tecla si no es número
         }
     // 2. Limitar a 3 caracteres
-        if (txtTarjeta.getText().length() >= 3) {
+        if (txtCvv.getText().length() >= 3) {
             evt.consume(); // Ignora si ya llegó al límite
         }
     }//GEN-LAST:event_txtCvvKeyTyped
@@ -361,6 +366,10 @@ public class frmPago extends javax.swing.JFrame {
             evt.setKeyChar(Character.toUpperCase(c));
         }
     }//GEN-LAST:event_txtNombreTitularKeyTyped
+
+    private void txtCvvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCvvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCvvActionPerformed
 
     /**
      * @param args the command line arguments

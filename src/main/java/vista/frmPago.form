@@ -188,6 +188,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtCvv">
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCvvActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCvvKeyTyped"/>
               </Events>
             </Component>
