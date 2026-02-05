@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
-/**
- *
- * @author Usuario
- */
+import dao.VueloDAO;
+import modelo.Vuelo;
+import java.util.List;
+
 public class ControladorVuelos {
-    
+
+    public List<Vuelo> obtenerTodosVuelosIda() {
+        return VueloDAO.obtenerTodosVuelosIda();
+    }
+
+    public List<Vuelo> obtenerTodosVuelosVuelta() {
+        return VueloDAO.obtenerTodosVuelosVuelta();
+    }
+
+    public List<Vuelo> buscarVuelosIda(String origen, String destino, String fecha) {
+        return VueloDAO.buscarVuelosIda(origen, destino, fecha);
+    }
+
+    public List<Vuelo> buscarVuelosVuelta(String origen, String destino, String fecha) {
+        return VueloDAO.buscarVuelosVuelta(origen, destino, fecha);
+    }
 }

@@ -6,7 +6,7 @@ package vista;
 
 /**
  *
- * @author Usuario
+ * @author Dilan
  */
 public class frmPago extends javax.swing.JFrame {
     
