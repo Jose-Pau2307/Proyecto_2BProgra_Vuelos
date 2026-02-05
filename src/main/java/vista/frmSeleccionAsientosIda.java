@@ -1,7 +1,6 @@
 package vista;
 
 import modelo.Vuelo;
-import dao.AsientoDAO;
 import modelo.Asiento;
 import javax.swing.*;
 import java.awt.*;
@@ -94,8 +93,8 @@ public class frmSeleccionAsientosIda extends JFrame {
     }
     
     private void crearAsientos() {
-        todosLosAsientos = AsientoDAO.generarAsientosParaVuelo(clase, false);
-        
+        todosLosAsientos = dao.AsientoDao.generarAsientosParaVuelo(clase, false);
+       
         // Crear mapa para acceso rápido
         for (Asiento a : todosLosAsientos) {
             mapaAsientos.put(a.getNumero(), a);

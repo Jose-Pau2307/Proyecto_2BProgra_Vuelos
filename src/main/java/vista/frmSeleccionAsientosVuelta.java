@@ -1,7 +1,6 @@
 package vista;
 
 import modelo.Vuelo;
-import dao.AsientoDAO;
 import modelo.Asiento;
 import javax.swing.*;
 import java.awt.*;
@@ -110,7 +109,7 @@ public class frmSeleccionAsientosVuelta extends JFrame {
     }
     
     private void crearAsientos() {
-        todosLosAsientos = AsientoDAO.generarAsientosParaVuelo(claseVuelta, true);
+        todosLosAsientos = dao.AsientoDao.generarAsientosParaVuelo(claseVuelta, true);
         
         for (Asiento a : todosLosAsientos) {
             mapaAsientos.put(a.getNumero(), a);
