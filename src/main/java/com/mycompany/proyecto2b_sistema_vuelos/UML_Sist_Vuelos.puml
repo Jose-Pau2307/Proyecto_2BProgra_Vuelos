@@ -1,85 +1,103 @@
 @startuml
 note as N1
 Autores:
+Matías Chushig
 Dilan Simbaña
 Génesis Tufiño
 Katherin Maila
 Joselyn Pauta
 end note
 
-class Aerolinea {
-    -nombre: String
-    +getNombre(): String
-}
+skinparam classAttributeIconSize 0
 
-class Cliente {
-    -nombre: String
-    -cedula: String
-    -correo: String
-    +registrarse(): void
-}
+package "modelo" {
 
 class Vuelo {
-    -numeroVuelo: String
-    -origen: String
-    -destino: String
-    -fecha: String
-    -precio: double
-    +getDetalles(): String
-}
-
-class Avion {
-    -modelo: String
-    -capacidad: int
-    +getCapacidad(): int
-}
-
-class Reserva {
-    -idReserva: String
-    -asiento: Asiento
-    +confirmarReserva(): void
-}
-
-class Factura {
-    -codigo: String
-    -precioFinal: double
-    -cliente: Cliente
-    -vuelo: Vuelo
-    -asiento: Asiento
-    +generarFactura(): void
+    - id : String
+    - origen : String
+    - destino : String
+    - precio : double
 }
 
 class Asiento {
-    -numero: int
-    -clase: String
-    -disponible: boolean
-    +isDisponible(): boolean
+    - numero : int
+    - tipo : TipoAsiento
+    - disponible : boolean
 }
 
-interface ExportadorFactura {
-    +exportar(factura: Factura): void
+enum TipoAsiento {
+    ECONOMICA
+    MEDIA
+    PREMIUM
 }
 
-class ExportadorPDF {
-    +exportar(factura: Factura): void
+class Pasajero {
+    - nombre : String
+    - apellido : String
+    - cedula : String
+    - celular : String
 }
 
+class CarritoReserva {
+    - vuelosSeleccionados : List<Vuelo>
+    - asientosSeleccionados : List<Asiento>
+    - pasajeros : List<Pasajero>
+    - total : double
+    - totalPasajeros : int
 
+    + agregarVuelo(v : Vuelo)
+    + agregarAsiento(a : Asiento)
+    + agregarPasajero(p : Pasajero)
+    + getTotal() : double
+}
 
-Aerolinea "1" -- "*" Vuelo : administra
-Aerolinea "1" -- "*" Avion : posee
+Vuelo "1" -- "*" Asiento
+CarritoReserva "1" o-- "*" Vuelo
+CarritoReserva "1" o-- "*" Asiento
+CarritoReserva "1" o-- "*" Pasajero
+}
 
-Vuelo "1" o-- "1" Avion : asignado a
-Avion "1" -- "*" Asiento : contiene
+package "dao" {
 
-Cliente "1" -- "*" Reserva : realiza
-Reserva "1" -- "1" Vuelo : para
-Reserva "1" -- "1" Asiento : elige
+class VueloDAO {
+    + listarVuelos() : List<Vuelo>
+}
 
-Reserva "1" ..> "1" Factura : genera
-Factura "1" -- "1" Cliente : pertenece a
+class AsientoDAO {
+    + listarAsientos() : List<Asiento>
+}
+}
 
-ExportadorFactura <|.. ExportadorPDF : implementa
-Factura ..> ExportadorFactura : es procesada por
+package "controlador" {
+
+class ControladorVuelos {
+    + buscarVuelos()
+    + seleccionarVuelo()
+    + confirmarReserva()
+}
+}
+
+package "vista" {
+
+class frmPrincipal
+class frmLogin
+class frmSeleccionVuelos
+class frmSeleccionAsientosIda
+class frmSeleccionAsientosVuelta
+class frmDatosPasajero
+class frmPago
+class SeleccionAsientosDialog
+}
+
+ControladorVuelos --> VueloDAO
+ControladorVuelos --> AsientoDAO
+ControladorVuelos --> CarritoReserva
+
+frmPrincipal --> ControladorVuelos
+frmSeleccionVuelos --> ControladorVuelos
+frmSeleccionAsientosIda --> ControladorVuelos
+frmSeleccionAsientosVuelta --> ControladorVuelos
+frmDatosPasajero --> ControladorVuelos
+frmPago --> ControladorVuelos
 
 @enduml
