@@ -1,0 +1,16 @@
+==========================================
+          VUELOS FIS - TICKET             
+==========================================
+Fecha: Thu Feb 05 10:08:17 GMT-05:00 2026
+Titular: Ricardo Pazmiño
+Tarjeta: ****-****-****-2305
+------------------------------------------
+VUELO IDA: ID001
+Ruta: Cuenca -> Manta
+Asientos: [10B, 10A, 5B]
+------------------------------------------
+VUELO VUELTA: VR003
+Ruta: Manta -> Cuenca
+Asientos: [21E, 21F, 21D]
+------------------------------------------
+PASAJEROS:
