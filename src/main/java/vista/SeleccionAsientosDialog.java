@@ -1,6 +1,5 @@
 package vista;
 
-import controlador.ControladorReserva;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -15,7 +14,6 @@ public class SeleccionAsientosDialog extends javax.swing.JDialog {
     private double precioClaseEjecutiva;
     private JLabel lblContador;
     private JLabel lblPrecioTotal;
-    private boolean esIda;
     
     // Variables de lógica
     private List<String> asientosSeleccionados = new ArrayList<>();
@@ -574,7 +572,7 @@ public class SeleccionAsientosDialog extends javax.swing.JDialog {
                 .addComponent(btnAceptar)
                 .addGap(51, 51, 51)
                 .addComponent(btnCancelar)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         panelControlesLayout.setVerticalGroup(
             panelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -667,35 +665,10 @@ public class SeleccionAsientosDialog extends javax.swing.JDialog {
             JOptionPane.YES_NO_OPTION,
             JOptionPane.QUESTION_MESSAGE);
         
-        /*if (confirmacion == JOptionPane.YES_OPTION) {
+        if (confirmacion == JOptionPane.YES_OPTION) {
             if (callback != null) {
                 callback.onAsientosSeleccionados(new ArrayList<>(asientosSeleccionados));
-            }*/
-        
-        if (confirmacion == JOptionPane.YES_OPTION) {
-    // 1. Convertir nombres a objetos Asiento
-            List<modelo.Asiento> listaObjetos = new ArrayList<>();
-        for (String s : asientosSeleccionados) {
-            listaObjetos.add(new modelo.Asiento(s));
-    }
-    // 2. Obtener la reserva actual
-            modelo.Reserva actual = controlador.ControladorReserva.getInstancia().getReservaActual();
-
-    // 3. Decidir si guardar en Ida o Vuelta 
-    // (Puedes usar una variable booleana 'esIda' que pases al abrir el diálogo)
-        if (this.esIda) { 
-            actual.setAsientosIda(listaObjetos);
-        } else {
-            actual.setAsientosVuelta(listaObjetos);
-        }
-
-    // Guardar el precio total acumulado
-    actual.setTotalPagar(actual.getTotalPagar() + precioBase + precioAdicional);
-
-        if (callback != null) {
-            callback.onAsientosSeleccionados(new ArrayList<>(asientosSeleccionados));
-    }
-        
+            }
             this.dispose();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed

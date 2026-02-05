@@ -242,6 +242,15 @@ private void abrirSeleccionVuelos() {
     this.dispose(); // Cerrar el formulario principal
 }
 
+// ================= ELIMINA ESTOS MÉTODOS QUE YA NO NECESITAS =================
+// Quita o comenta estos métodos:
+// private void iniciarSeleccionAsientos() { ... }
+// private void abrirSeleccionAsientosIda() { ... }
+// private void abrirSeleccionAsientosVuelta() { ... }
+// private void mostrarResumenSeleccionIda() { ... }
+// private void mostrarResumenSeleccionCompleta() { ... }
+// private double obtenerPrecioBaseVuelo() { ... }
+// private List<String> obtenerAsientosOcupados() { ... }
 
     /* ================= MÉTODOS PARA SELECCIÓN DE ASIENTOS =================
     
@@ -486,9 +495,9 @@ private void abrirSeleccionVuelos() {
         cmbBebes = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         btnBuscarVuelos = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
-        btnReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -591,6 +600,15 @@ private void abrirSeleccionVuelos() {
                                 .addGap(36, 36, 36)
                                 .addComponent(rbSoloIda, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel6)
+                                .addGap(12, 12, 12)
+                                .addComponent(fechaIdaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73)
+                                .addComponent(jLabel7)
+                                .addGap(34, 34, 34)
+                                .addComponent(fechaVueltaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(104, 104, 104)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -600,16 +618,7 @@ private void abrirSeleccionVuelos() {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cmbDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel6)
-                                .addGap(12, 12, 12)
-                                .addComponent(fechaIdaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73)
-                                .addComponent(jLabel7)
-                                .addGap(34, 34, 34)
-                                .addComponent(fechaVueltaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cmbDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -637,7 +646,7 @@ private void abrirSeleccionVuelos() {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cmbOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -651,7 +660,7 @@ private void abrirSeleccionVuelos() {
                     .addComponent(cmbNinos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbBebes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,15 +675,24 @@ private void abrirSeleccionVuelos() {
 
         jPanel3.setBackground(new java.awt.Color(24, 84, 144));
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image.png"))); // NOI18N
+        jLabel8.setText("jLabel8");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(635, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         panelPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 170));
@@ -699,18 +717,7 @@ private void abrirSeleccionVuelos() {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
-
-        btnReserva.setBackground(new java.awt.Color(100, 100, 100));
-        btnReserva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnReserva.setForeground(new java.awt.Color(255, 255, 255));
-        btnReserva.setText("Revisar Reservas");
-        btnReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReservaActionPerformed(evt);
-            }
-        });
-        panelPrincipal.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, -1, -1));
+        panelPrincipal.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -756,13 +763,6 @@ private void abrirSeleccionVuelos() {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbOrigenActionPerformed
 
-    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservaActionPerformed
-        frmReservas ventanaReservas = new frmReservas();
-        ventanaReservas.cargarTablaReservas();
-        ventanaReservas.setVisible(true);
-            this.dispose();
-    }//GEN-LAST:event_btnReservaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -789,7 +789,6 @@ private void abrirSeleccionVuelos() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarVuelos;
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnReserva;
     private javax.swing.JComboBox<String> cmbAdultos;
     private javax.swing.JComboBox<String> cmbBebes;
     private javax.swing.JComboBox<String> cmbDestino;
@@ -803,6 +802,7 @@ private void abrirSeleccionVuelos() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;

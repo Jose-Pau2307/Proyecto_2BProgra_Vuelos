@@ -13,12 +13,6 @@ public class Asiento {
     public Asiento() {
     }
     
-    //Costructor Asiento
-    public Asiento(String numero) {
-    this.numero = numero;
-    this.disponible = false; // Asumimos que si se crea para una reserva, ya no está disponible
-}
-    
     // Constructor con parámetros
     public Asiento(String numero, String tipo, double precioExtra, String seccion, 
                    boolean disponible, int fila, String letra) {
