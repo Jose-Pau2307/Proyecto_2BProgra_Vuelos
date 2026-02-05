@@ -1,0 +1,17 @@
+==========================================
+          VUELOS FIS - TICKET             
+==========================================
+Fecha: Thu Feb 05 01:08:14 GMT-05:00 2026
+Titular: Miguel
+Tarjeta: ****-****-****-3322
+------------------------------------------
+VUELO IDA: ID002
+Ruta: Quito -> Cuenca
+Asientos: [6C]
+------------------------------------------
+VUELO VUELTA: VR001
+Ruta: Cuenca -> Quito
+Asientos: [20E]
+------------------------------------------
+PASAJEROS:
+- Miguel Sanchez (ID: 178965
