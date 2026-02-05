@@ -65,6 +65,11 @@ public class VueloDAO {
     private static List<Vuelo> buscarVuelos(String origen, String destino,
                                             String fecha, String archivo) {
 
+        // 🔐 Normalizar NULL para evitar NullPointerException
+        origen = (origen == null) ? "" : origen;
+        destino = (destino == null) ? "" : destino;
+        fecha = (fecha == null) ? "" : fecha;
+
         List<Vuelo> vuelos = new ArrayList<>();
 
         try (
@@ -89,7 +94,6 @@ public class VueloDAO {
                     double precio = Double.parseDouble(datos[3].trim());
                     String avion = datos[4].trim();
 
-                    // 🔑 FILTRO FLEXIBLE
                     boolean coincideOrigen = origen.isEmpty() || orig.equalsIgnoreCase(origen);
                     boolean coincideDestino = destino.isEmpty() || dest.equalsIgnoreCase(destino);
 
@@ -100,7 +104,7 @@ public class VueloDAO {
                         v.setDestino(dest);
                         v.setPrecio(precio);
                         v.setAvion(avion);
-                        v.setFecha(fecha);
+                        v.setFecha(fecha.isEmpty() ? "2026-01-01" : fecha);
 
                         vuelos.add(v);
                     }
@@ -118,6 +122,11 @@ public class VueloDAO {
     private static List<Vuelo> crearVuelosEjemplo(String origen, String destino,
                                                   String fecha, String archivo) {
 
+        // 🔐 Normalizar NULL
+        origen = (origen == null) ? "" : origen;
+        destino = (destino == null) ? "" : destino;
+        fecha = (fecha == null) ? "" : fecha;
+
         List<Vuelo> vuelos = new ArrayList<>();
         Random r = new Random();
 
@@ -126,6 +135,7 @@ public class VueloDAO {
 
         if (origen.isEmpty()) origen = "Quito";
         if (destino.isEmpty()) destino = "Guayaquil";
+        if (fecha.isEmpty()) fecha = "2026-01-01";
 
         for (int i = 1; i <= cantidad; i++) {
             Vuelo v = new Vuelo();
@@ -134,7 +144,7 @@ public class VueloDAO {
             v.setDestino(destino);
             v.setPrecio(80 + r.nextInt(120));
             v.setAvion("A320");
-            v.setFecha(fecha.isEmpty() ? "2026-01-01" : fecha);
+            v.setFecha(fecha);
             vuelos.add(v);
         }
 

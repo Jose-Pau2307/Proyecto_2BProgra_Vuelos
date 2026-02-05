@@ -1,0 +1,4 @@
+codigo,origen,destino,fecha_salida,fecha_llegada,precio,asientos_disponibles,avion
+VF101,Guayaquil,Quito,2024-01-20 08:00,2024-01-20 09:00,150.00,120,Boeing 737-800
+VF102,Quito,Guayaquil,2024-01-20 10:00,2024-01-20 11:00,150.00,115,Airbus A320
+VF103,Guayaquil,Quito,2024-01-21 14:00,2024-01-21 15:00,140.00,100,Boeing 737-800
