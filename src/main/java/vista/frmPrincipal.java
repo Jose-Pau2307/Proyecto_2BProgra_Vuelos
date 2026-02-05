@@ -497,6 +497,7 @@ private void abrirSeleccionVuelos() {
         jPanel3 = new javax.swing.JPanel();
         btnBuscarVuelos = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
+        btnVerTickets = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -707,7 +708,18 @@ private void abrirSeleccionVuelos() {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        panelPrincipal.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+
+        btnVerTickets.setBackground(new java.awt.Color(100, 100, 100));
+        btnVerTickets.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVerTickets.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerTickets.setText("Ver tickets");
+        btnVerTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTicketsActionPerformed(evt);
+            }
+        });
+        panelPrincipal.add(btnVerTickets, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -752,6 +764,13 @@ private void abrirSeleccionVuelos() {
     private void cmbOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrigenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbOrigenActionPerformed
+    
+    //Boton para ir a ver tickets generados
+    private void btnVerTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTicketsActionPerformed
+        frmHistorialTickets ventanaTickets = new frmHistorialTickets();
+        ventanaTickets.setVisible(true);
+        this.dispose(); // Opcional, si quieres cerrar el principal
+    }//GEN-LAST:event_btnVerTicketsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -779,6 +798,7 @@ private void abrirSeleccionVuelos() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarVuelos;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnVerTickets;
     private javax.swing.JComboBox<String> cmbAdultos;
     private javax.swing.JComboBox<String> cmbBebes;
     private javax.swing.JComboBox<String> cmbDestino;

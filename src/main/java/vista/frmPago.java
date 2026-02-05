@@ -106,7 +106,9 @@ public class frmPago extends javax.swing.JFrame {
                 "Transacción Finalizada", 
                 javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
-            System.exit(0); // Cierra la aplicación
+            vista.frmPrincipal principal = new vista.frmPrincipal(); // Asegúrate que el nombre de la clase sea exacto
+            principal.setVisible(true);
+            this.dispose(); // Cierra la aplicación
             
         } catch (java.io.IOException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error al guardar el ticket: " + ex.getMessage());
@@ -152,6 +154,17 @@ public class frmPago extends javax.swing.JFrame {
 
         jLabel3.setText("Número de Tarjeta");
 
+        txtTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarjetaActionPerformed(evt);
+            }
+        });
+        txtTarjeta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTarjetaKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Nombre del Titular:");
 
         jLabel5.setText("Vencimiento (MM/YY)");
@@ -161,8 +174,25 @@ public class frmPago extends javax.swing.JFrame {
                 txtNombreTitularActionPerformed(evt);
             }
         });
+        txtNombreTitular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreTitularKeyTyped(evt);
+            }
+        });
+
+        txtVencimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtVencimientoKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("CVC");
+
+        txtCvv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCvvKeyTyped(evt);
+            }
+        });
 
         btnPagar.setText("Pagar");
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +302,65 @@ public class frmPago extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage());
         }
     }//GEN-LAST:event_btnPagarActionPerformed
+
+    private void txtTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarjetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarjetaActionPerformed
+
+    private void txtTarjetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTarjetaKeyTyped
+        char c = evt.getKeyChar();
+    // 1. Verificar si es un número
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Ignora la tecla si no es número
+        }
+    // 2. Limitar a 16 caracteres
+        if (txtTarjeta.getText().length() >= 16) {
+            evt.consume(); // Ignora si ya llegó al límite
+        }
+    }//GEN-LAST:event_txtTarjetaKeyTyped
+
+    private void txtVencimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVencimientoKeyTyped
+        char c = evt.getKeyChar();
+        String textoActual = txtVencimiento.getText();
+    // 1. Solo permitir números
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            return; // Salimos para no ejecutar lo siguiente
+        }
+    // 2. Limitar a un máximo de 5 caracteres (MM/YY)
+        if (textoActual.length() >= 5) {
+            evt.consume();
+            return;
+        }
+    // 3. Auto-formato: Poner la "/" automáticamente
+        if (textoActual.length() == 2) {
+            txtVencimiento.setText(textoActual + "/");
+        }
+    }//GEN-LAST:event_txtVencimientoKeyTyped
+
+    private void txtCvvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCvvKeyTyped
+        char c = evt.getKeyChar();
+    // 1. Verificar si es un número
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Ignora la tecla si no es número
+        }
+    // 2. Limitar a 3 caracteres
+        if (txtTarjeta.getText().length() >= 3) {
+            evt.consume(); // Ignora si ya llegó al límite
+        }
+    }//GEN-LAST:event_txtCvvKeyTyped
+
+    private void txtNombreTitularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreTitularKeyTyped
+        char c = evt.getKeyChar();
+    // 1. Permitir letras, espacios y teclas de control (como borrar) y usamos ! para decir: "Si NO es letra Y NO es espacio Y NO es borrar..."
+        if (!(Character.isLetter(c) || c == java.awt.event.KeyEvent.VK_SPACE || c == java.awt.event.KeyEvent.VK_BACK_SPACE)) {
+            evt.consume(); // Bloquea la tecla (números o símbolos)
+        }
+    // 2. Opcional: Convertir automáticamente a MAYÚSCULAS mientras escribe
+        if (Character.isLowerCase(c)) {
+            evt.setKeyChar(Character.toUpperCase(c));
+        }
+    }//GEN-LAST:event_txtNombreTitularKeyTyped
 
     /**
      * @param args the command line arguments

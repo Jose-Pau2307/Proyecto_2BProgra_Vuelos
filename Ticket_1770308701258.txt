@@ -1,0 +1,17 @@
+==========================================
+          VUELOS FIS - TICKET             
+==========================================
+Fecha: Thu Feb 05 11:25:01 GMT-05:00 2026
+Titular: Dilan
+Tarjeta: ****-****-****-4112
+------------------------------------------
+VUELO IDA: ID001
+Ruta: Quito -> Cuenca
+Asientos: [21D]
+------------------------------------------
+VUELO VUELTA: VR002
+Ruta: Cuenca -> Quito
+Asientos: [4B]
+------------------------------------------
+PASAJEROS:
+- Dilan Simbaña (ID: 1789362
